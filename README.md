@@ -42,9 +42,9 @@ We propose a notebook file *main.ipynb* illustrating how to generate a random DH
 
 Some examples of generated DHN-like graphs:
 
-![Sample DHN-1](https://github.com/drod-96/synthetic_dhn_model/Images/output_dhn_test_1.png?raw=true)
+![Sample DHN-1](https://github.com/drod-96/synthetic_dhn_model/blob/main/Images/output_dhn_test_1.png?raw=true)
 
-![Sample DHN-2](https://github.com/drod-96/synthetic_dhn_model/Images/output_dhn_test_2.png?raw=true)
+![Sample DHN-2](https://github.com/drod-96/synthetic_dhn_model/blob/main/Images/output_dhn_test_2.png?raw=true)
 
 
 # Python packages
