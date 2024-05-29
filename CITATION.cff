@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Rodrigue"
+  given-names: "Dubon"
+  orcid: "https://orcid.org/0009-0007-2960-750X"
+title: "Research software - DHN generator"
+version: 1.0
+doi: 10.5281/zenodo.1234
+date-released: 2024-05-30
+url: "https://github.com/drod-96/synthetic_dhn_model"
