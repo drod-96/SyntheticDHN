@@ -1,0 +1,7 @@
+Demands_models/
+Synthetic_DHNs/*
+.env/
+
+test.ipynb
+
+*.pyc
