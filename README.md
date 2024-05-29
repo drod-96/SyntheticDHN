@@ -40,6 +40,12 @@ Conceptually, we generate the heating demands using the following steps:
 
 We propose a notebook file *main.ipynb* illustrating how to generate a random DHN and nodes heating demands. All code sources can be found in the folder *src*. We also note that this repository uses only publicly available data including Nantes outdoor temperatures, DPE classes range of consumption powers and class distribution taken from DPE data. DPE data files are not available in this repository but can be found on the ADEME [[link](https://www.ademe.fr/)] website. For more information, please refer to contact section. 
 
+Some examples of generated DHN-like graphs:
+
+![Sample DHN-1](https://github.com/drod-96/synthetic_dhn_model/Images/output_dhn_test_1.png?raw=true)
+
+![Sample DHN-2](https://github.com/drod-96/synthetic_dhn_model/Images/output_dhn_test_2.png?raw=true)
+
 
 # Python packages
 
