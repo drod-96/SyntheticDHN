@@ -135,9 +135,11 @@ class GraphDHNGenerator(object):
         
         G, pos = self._generate_region_graph(center, nb)
         ratio = G.number_of_edges() / (G.number_of_nodes() - 1)
-        while np.abs(ratio - params.target_ratio) > 1e-1:
+        iterr = 0
+        while np.abs(ratio - params.target_ratio) > 1e-2 and iterr <= 1000:
             if ratio > params.target_ratio:
                 # recreer un autre graph
+                # TODO: Remove some edges
                 G, pos = self._generate_region_graph(center, nb)
             else:
                 node1 = np.random.choice(list(G.nodes()))
@@ -145,6 +147,7 @@ class GraphDHNGenerator(object):
                 G.add_edge(node1, node2)
             G = self._remove_self_loop(G)
             ratio = G.number_of_edges() / (G.number_of_nodes() -1)
+            iterr += 1
         # print(f'Ratio (E/V) = {ratio}')
         return G
     
