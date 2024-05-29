@@ -36,6 +36,11 @@ Conceptually, we generate the heating demands using the following steps:
 - Randomly select the energy consumption value based on the DPE class of each building type
 - Creates the heating demands profile for the year based on know heating demands profiles
 
+# Usability
+
+We propose a notebook file *main.ipynb* illustrating how to generate a random DHN and nodes heating demands. All code sources can be found in the folder *src*. We also note that this repository uses only publicly available data including Nantes outdoor temperatures, DPE classes range of consumption powers and class distribution taken from DPE data. DPE data files are not available in this repository but can be found on the ADEME [[link](https://www.ademe.fr/)] website. For more information, please refer to contact section.
+
+
 # Python packages
 
 This project only uses publicly available packages which makes the replication and contribution easier. To install all required packages, enter the following line commands at the project source folder
@@ -52,4 +57,4 @@ For more information see [LICENSE](LICENSE).
 
 # Contributions
 
-This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community.
+This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community. Please contact us at dubon.rodrigue@imt-atlantique.fr
