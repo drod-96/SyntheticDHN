@@ -136,7 +136,7 @@ class GraphDHNGenerator(object):
         G, pos = self._generate_region_graph(center, nb)
         ratio = G.number_of_edges() / (G.number_of_nodes() - 1)
         iterr = 0
-        while np.abs(ratio - params.target_ratio) > 1e-2 and iterr <= 1000:
+        while np.abs(ratio - params.target_ratio) > 1e-1 and iterr <= 1000:
             if ratio > params.target_ratio:
                 # recreer un autre graph
                 # TODO: Remove some edges
@@ -310,7 +310,7 @@ class GraphDHNGenerator(object):
         for n in range(n_nodes):
             positions[n] = np.array([df_nodes.iloc[n]['x'],df_nodes.iloc[n]['y']])
             labels[n] = n
-            if df_nodes.iloc[n]['is_prod'] == 1:
+            if df_nodes.iloc[n]['Is source'] == 1:
                 node_colors.append('tab:red')
                 producer_indices.append(n)
             else:

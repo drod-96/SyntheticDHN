@@ -5,13 +5,13 @@ import pandas as pd
 
 # French DPE energetic class consumption levels
 dpe_classes_conso_thresholds = {
-    'A': [0.0, 70.0], # kWh/m2/an
-    'B': [70.1, 110.0],
-    'C': [110.1, 180.0],
-    'D': [180.1, 250.0],
-    'E': [250.1, 330.0],
-    'F': [330.1, 420.0],
-    'G': [420.1, 1000.0], # No upper limit
+    'A': [20.0, 70.0], # kWh/m2/an
+    'B': [71.0, 110.0],
+    'C': [111.0, 180.0],
+    'D': [181, 250.0],
+    'E': [251, 330.0],
+    'F': [331, 420.0],
+    'G': [421, 1000.0], # No upper limit
 }
 
 # Different building types heating area
@@ -96,7 +96,7 @@ def _generate_heating_demands_from_percentage_of_total_areas(min_heating_area=mi
         dict: dictionary containing the percentage of each type, profile factors and heating demands of the substation
     """
     
-    heating_profiles = pd.read_csv(os.path.join('src', 'files', 'heating_demands_profiles.csv'))
+    heating_profiles = pd.read_csv(os.path.join('src', 'files', 'heating_demands_profiles_v2.csv'))
     dict_values = {}
     
     # Here
@@ -187,7 +187,7 @@ def _generate_heating_demands_from_fixed_areas_per_building_types(verbose=0) -> 
         dict_values[key]['profile_factor'] = dict_values[key]['mean_E'] / integrated_profiles # profile factor is in fact in kW
         
         # total heating demand
-        dict_values[key]['total_heating_demand'] = dict_values[key]['profile_factor'] * heating_profiles[key]
+        dict_values[key]['total_heating_demand'] = dict_values[key]['profile_factor'] * heating_profiles[key] + 5.0 # avoid 0 W demands
         
         dict_values[key]['percentage'] = (dict_values[key]['heating_area'] / total_area)
         

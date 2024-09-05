@@ -109,8 +109,8 @@ class DHNTopology(object):
             h = np.random.uniform(self.min_convective_coefficient, self.max_convective_coefficient)
             diameter = np.random.uniform(self.min_diameter, self.max_diameter)
             pipes_metadata.append({
-                'start node': start_node,
-                'end node': end_node,
+                'start node': start_node + 1,
+                'end node': end_node + 1,
                 'Diameter': diameter,
                 'h': h,
                 'length': length
@@ -165,6 +165,8 @@ class DHNTopology(object):
         
         df_loads = pd.DataFrame.from_dict(dict_heating_profiles)
         df_loads.to_excel(writer_excel, sheet_name='loads', index=True, index_label=True)
+        
+        self._loads = df_loads
                 
     def _generate_loads_model_heating_law(self, writer_excel):
         """Generates heating demands of the nodes based on heating law model
@@ -217,6 +219,8 @@ class DHNTopology(object):
         df_loads = pd.concat([df_loads, nn_loads], axis=1)
         df_cons.to_excel(writer_excel, sheet_name='consumers', index=False, index_label=False)
         df_loads.to_excel(writer_excel, sheet_name='loads', index=False, index_label=False)
+        
+        self._loads = df_loads
         
     def _fill_dhn_information(self):
         """Creates the topology excel file and fills the information about the nodes and the pipes  
