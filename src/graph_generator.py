@@ -115,11 +115,11 @@ class GraphDHNGenerator(object):
 
         # Ensure that the graph has the desired diameter
         it = 0
-        while nx.diameter(G) < max_diameter and it < 100:
-            node1 = np.random.choice(list(G.nodes()))
-            node2 = np.random.choice(list(G.nodes()))
-            G.add_edge(node1, node2)
-            it+=1
+        # while nx.diameter(G) < max_diameter and it < 100:
+        #     node1 = np.random.choice(list(G.nodes()))
+        #     node2 = np.random.choice(list(G.nodes()))
+        #     G.add_edge(node1, node2)
+        #     it+=1
         
         pos = nx.kamada_kawai_layout(G, center=center)
         return G, pos
@@ -136,15 +136,16 @@ class GraphDHNGenerator(object):
         G, pos = self._generate_region_graph(center, nb)
         ratio = G.number_of_edges() / (G.number_of_nodes() - 1)
         iterr = 0
-        while np.abs(ratio - params.target_ratio) > 1e-1 and iterr <= 1000:
-            if ratio > params.target_ratio:
-                # recreer un autre graph
-                # TODO: Remove some edges
-                G, pos = self._generate_region_graph(center, nb)
-            else:
-                node1 = np.random.choice(list(G.nodes()))
-                node2 = np.random.choice([item for item in list(G.nodes()) if item != node1])
-                G.add_edge(node1, node2)
+        while np.abs(ratio - params.target_ratio) > 1e-1 and iterr <= 100:
+            G, pos = self._generate_region_graph(center, nb)
+            # if ratio > params.target_ratio:
+            #     # recreer un autre graph
+            #     # TODO: Remove some edges
+            #     G, pos = self._generate_region_graph(center, nb)
+            # else:
+            #     node1 = np.random.choice(list(G.nodes()))
+            #     node2 = np.random.choice([item for item in list(G.nodes()) if item != node1])
+            #     G.add_edge(node1, node2)
             G = self._remove_self_loop(G)
             ratio = G.number_of_edges() / (G.number_of_nodes() -1)
             iterr += 1
@@ -188,7 +189,7 @@ class GraphDHNGenerator(object):
         ii = 0
         print('Generating each region ...')
         while count_graph < params.nb_regions:
-            print(f'\tRegion {count_graph+1}')
+            print(f'\tRegion {count_graph+1} ...')
             if count_graph == len(center_coordinates_of_trees):
                 ii = 0
             center_position_of_tree = center_coordinates_of_trees[ii]
