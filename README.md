@@ -2,7 +2,7 @@ This project developed during Ph.D work contains synthetic District Heating Netw
 
 # SyntheticDHN
 
-SyntheticDHN is a complete synthetic DHN generator which we believe can be important for users and researchers and we believe may be first step to generate benchmarks DHN as in IEEE for electrical grid. This software uses Graph theory approach combined to the node method to generate plausible DHN's layouts incoroporating some expertise based constraints. The nodes are then randomly selected to be substations or junction nodes. Substation nodes are assigned synthetic but realistic heating demands profiles (for one year) using France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
+SyntheticDHN is a complete synthetic 3GDHN generator which we believe can be important for users and researchers and we believe may be first step to generate benchmarks DHN as in IEEE for electrical grid. This software uses Graph theory approach combined to the node method to generate plausible DHN's layouts incoroporating some expertise based constraints. The nodes are then randomly selected to be substations or junction nodes. Substation nodes are assigned synthetic but realistic heating demands profiles (for one year) using France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
 
 ## **Graph generator model**
 
@@ -16,7 +16,7 @@ Once the graph is created, the display on a 2D space necessites an optimization 
 
 Contraints applied on the DHN's layouts are based on expertise point of view. For instance, a maximal degree of 4 is applied to all nodes with tree-like layout. Loops are added in post-processing to mimic thermal network's looping pipes using statistical assumptions. Also, loop of 3 nodes (*i.e.*, triangle cliques) are discarded as they are physically unlikely. We note that the proposed software allows the user to change all of these parameters.
 
-Additionally, expertise knowledge suggests that the DHN are subdivied into internal regions or subregions which we capture by generating the overall network as ensemble of sub-DHNs. Connections between these subregions are randomly applied. These constitute hyperparameters that the users can adapt as desired.
+Additionally, expertise knowledge suggests that the DHN are subdivied into internal regions or subregions which we capture by generating the overall network as ensemble of sub-DHNs. Connections between these subregions are randomly applied. These constitute hyperparameters that the users can adapt as desired. Each subregion may have between 0 to 2 heat sources which also can be adapted by the user.
 
 ### Recursie nodes adding approach
 
@@ -83,3 +83,7 @@ For more information see [LICENSE](LICENSE).
 This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community. 
 
 Please contact us at dubon.rodrigue@imt-atlantique.fr.
+
+# Next version ...
+
+Next version of this approach will include an additional step which dimensions the pipes based on the position of the heat produces, the position and the level of heating demands of the substations. 
