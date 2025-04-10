@@ -84,7 +84,7 @@ For more information see [LICENSE](LICENSE).
 
 # Contributions
 
-This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community. 
+This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognize that many parts can be improved and we welcome all contributions from the community. 
 
 Please contact us at dubon.rodrigue@imt-atlantique.fr.
 
