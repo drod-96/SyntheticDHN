@@ -1,19 +1,30 @@
-This project developed during Ph.D work contains synthetic District Heating Networks generator models. More precisely, it contains a graph generator model and a heating demands profiles model.
+This project developed during Ph.D work contains synthetic District Heating Networks generator models referred to as **SyntheticDHN**. More precisely, it contains a graph generator model and a heating demands profiles model.
 
-# DHN generator models
+# SyntheticDHN
 
-### **Graph generator model**
+SyntheticDHN is a complete synthetic DHN generator which we believe can be important for users and researchers and we believe may be first step to generate benchmarks DHN as in IEEE for electrical grid. This software uses Graph theory approach combined to the node method to generate plausible DHN's layouts incoroporating some expertise based constraints. The nodes are then randomly selected to be substations or junction nodes. Substation nodes are assigned synthetic but realistic heating demands profiles (for one year) using France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
+
+## **Graph generator model**
 
 The graph generator is a *constrained* random graph generator model. The whole concept of this model is to generate a random graph mimicking the topology of the real-world District Heating Network's topology in terms of nodes degrees distribution, maximal nodes degree and connectivity.
 
 For more control purpose, this model does not use established random generator model but generates graph from scratch using a *recursive nodes adding approach*. Based on the target number of nodes and maximal degree, at each step, a new node is created and randomly connected to previously created nodes.
 
-Once the graph is created, the display on a 2D space necessites an optimization approach in order to disperse effectively the nodes on the 2D grid. We rely on the *Kamada-Kawai* cost-function graph layout [[link](https://arxiv.org/pdf/1508.05312)].
+Once the graph is created, the display on a 2D space necessites an optimization approach in order to disperse effectively the nodes on the 2D grid. We rely on improved version of the *Kamada-Kawai* cost-function graph layout [[link](https://arxiv.org/pdf/1508.05312)].
 
+### Expertise based constraints
 
-### **Heating demands model**
+Contraints applied on the DHN's layouts are based on expertise point of view. For instance, a maximal degree of 4 is applied to all nodes with tree-like layout. Loops are added in post-processing to mimic thermal network's looping pipes using statistical assumptions. Also, loop of 3 nodes (*i.e.*, triangle cliques) are discarded as they are physically unlikely. We note that the proposed software allows the user to change all of these parameters.
 
-Two heating demands models have been during this thesis. 
+Additionally, expertise knowledge suggests that the DHN are subdivied into internal regions or subregions which we capture by generating the overall network as ensemble of sub-DHNs. Connections between these subregions are randomly applied. These constitute hyperparameters that the users can adapt as desired.
+
+### Recursie nodes adding approach
+
+This approach has been considered to give high flexibility about the generation of the layouts of the DHN instead of using some established random graph generator approaches. Indeed, our proposed approach generates the DHN as graph by recursively adding nodes and connecting the new nodes to previously added nodes. Doing, limiting connections and number of formed nodes become more effectively.
+
+## **Heating demands model**
+
+Two heating demands models have been developed during this thesis. 
 
 #### Heating law
 
@@ -21,9 +32,11 @@ First model uses a modified heating law approach. In this case, a substation nod
 
 Conceptually, we generate the heating demands using the following steps:
 
-- Randomly select heating area and heat exchanger efficiency coefficient
+- Randomly select heating area and heat exchanger efficiency coefficient [*minArea*, *maxArea*]
 - Retrieve outdoor temperatures of Nantes 
 - Creates the heating demands profile for the year using the simple formula of D = U x (T - Tref) where Tref is a threshold temperature fixed at 18°C
+
+*minArea*, *maxArea* and *U* factors are users inputs.
 
 #### DPE data based
 
@@ -35,6 +48,10 @@ Conceptually, we generate the heating demands using the following steps:
 - Randomly select the DPE class based on know french building distributions
 - Randomly select the energy consumption value based on the DPE class of each building type
 - Creates the heating demands profile for the year based on know heating demands profiles
+
+ADEME data can be retrieved from the ADEME [website](https://data-transitions2050.ademe.fr/).
+
+To generate the heating demands profiles, this work relies on profiles data from the work of [Ruhnau, O. and Muessel, J., When2Heat Heating Profiles. Open Power System Data, 2023](https://doi.org/10.25832/when2heat/2023-07-27)
 
 # Usability
 
@@ -63,4 +80,6 @@ For more information see [LICENSE](LICENSE).
 
 # Contributions
 
-This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community. Please contact us at dubon.rodrigue@imt-atlantique.fr.
+This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognise that many parts can be improved and we welcome all interested contributors from the community. 
+
+Please contact us at dubon.rodrigue@imt-atlantique.fr.
