@@ -4,7 +4,7 @@ authors:
 - family-names: "Rodrigue"
   given-names: "Dubon"
   orcid: "https://orcid.org/0009-0007-2960-750X"
-title: "SyntheticDHN: a novel Realistic District Heating Network generator"
+title: "SyntheticDHN: a Realistic District Heating Network generator"
 version: 1.0
 doi: 10.5281/zenodo.11382923
 date-released: 2024-05-29
