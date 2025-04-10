@@ -36,7 +36,9 @@ Conceptually, we generate the heating demands using the following steps:
 
 - Randomly select heating area and heat exchanger efficiency coefficient [*minArea*, *maxArea*]
 - Retrieve outdoor temperatures of Nantes 
-- Creates the heating demands profile for the year using the simple formula of D = U x (T - Tref) where Tref is a threshold temperature fixed at 18°C
+- Creates the heating demands profile for the year using the following heating law formula where Tref is a threshold temperature fixed at 18°C, U the heat exchange coefficient and A the exchange area of the substaion
+
+$$D = A . U . (T - Tref) $$
 
 *minArea*, *maxArea* and *U* factors are users inputs.
 
