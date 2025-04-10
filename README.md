@@ -1,34 +1,36 @@
-This project developed during Ph.D work contains synthetic District Heating Networks generator models referred to as **SyntheticDHN**. More precisely, it contains a graph generator model and a heating demands profiles model.
+This project, developed as part of a Ph.D. research, provides synthetic District Heating Network (DHN) generator models under the name **SyntheticDHN**. It includes a graph-based network generator as well as a model for generating realistic heating demand profiles.
 
 # SyntheticDHN
 
-SyntheticDHN is a complete synthetic 3GDHN generator which we believe can be important for users and researchers and we believe may be first step to generate benchmarks DHN as in IEEE for electrical grid. This software uses Graph theory approach combined to the node method to generate plausible DHN's layouts incoroporating some expertise based constraints. The nodes are then randomly selected to be substations or junction nodes. Substation nodes are assigned synthetic but realistic heating demands profiles (for one year) using France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
+SyntheticDHN is a comprehensive synthetic 3rd Generation District Heating Network (3GDHN) generator. We believe it can be a valuable tool for both users and researchers, potentially serving as a first step toward establishing standardized DHN benchmarks—similar to the IEEE benchmarks used in power systems. The software employs a graph theory-based approach combined with the node method to generate plausible DHN layouts, incorporating domain-specific constraints. Nodes are randomly designated as either substations or junction points. Substation nodes are then assigned synthetic, yet realistic, year-long heating demand profiles based on data from France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
 
 ## **Graph generator model**
 
-The graph generator is a *constrained* random graph generator model. The whole concept of this model is to generate a random graph mimicking the topology of the real-world District Heating Network's topology in terms of nodes degrees distribution, maximal nodes degree and connectivity.
+The graph generator is a constrained random graph model designed to emulate the topology of real-world District Heating Networks (DHNs). Its goal is to reproduce key structural properties, such as node degree distribution, maximum node degree, and overall network connectivity. To maintain greater control over the generated topology, this model does not rely on standard *random graph generators*. Instead, it builds the network from scratch using a designed **recursive nodes adding approach**. Given a target number of nodes and a maximum degree, nodes are added one by one and randomly connected to previously created nodes, while respecting the specified constraints.
 
-For more control purpose, this model does not use established random generator model but generates graph from scratch using a *recursive nodes adding approach*. Based on the target number of nodes and maximal degree, at each step, a new node is created and randomly connected to previously created nodes.
+Once the graph structure is complete, it must be laid out in a 2D space for visualization. This requires an optimization process to effectively distribute the nodes following a tree-like layout. For this purpose, we use an improved version of the *Kamada-Kawai* cost-function [layout algorithm](https://arxiv.org/pdf/1508.05312).
 
-Once the graph is created, the display on a 2D space necessites an optimization approach in order to disperse effectively the nodes on the 2D grid. We rely on improved version of the *Kamada-Kawai* cost-function graph layout [[link](https://arxiv.org/pdf/1508.05312)].
+### Expertise-based constraints
 
-### Expertise based constraints
+The constraints applied to the DHN layouts apply domain expertises. For example, a maximum node degree of 4 is enforced to reflect the tree-like structure commonly observed in real-world networks. Loops are introduced during a post-processing step to emulate the presence of thermal looping pipes, following statistical assumptions. Triangular loops (i.e., 3-node cliques) are excluded, as they are considered physically unrealistic in this context.
 
-Contraints applied on the DHN's layouts are based on expertise point of view. For instance, a maximal degree of 4 is applied to all nodes with tree-like layout. Loops are added in post-processing to mimic thermal network's looping pipes using statistical assumptions. Also, loop of 3 nodes (*i.e.*, triangle cliques) are discarded as they are physically unlikely. We note that the proposed software allows the user to change all of these parameters.
+Expert knowledge also indicates that DHNs are often subdivided into internal regions or sub-networks. This characteristic is captured in the model by generating the overall network as an ensemble of sub-DHNs, with interconnections between them created randomly. These inter-subregion links, as well as the number and placement of heat sources (ranging from 0 to 2 per subregion), are treated as hyperparameters.
 
-Additionally, expertise knowledge suggests that the DHN are subdivied into internal regions or subregions which we capture by generating the overall network as ensemble of sub-DHNs. Connections between these subregions are randomly applied. These constitute hyperparameters that the users can adapt as desired. Each subregion may have between 0 to 2 heat sources which also can be adapted by the user.
+Importantly, all of these parameters are user-configurable, allowing for flexible adaptation to different requirements.
 
 ### Recursie nodes adding approach
 
-This approach has been considered to give high flexibility about the generation of the layouts of the DHN instead of using some established random graph generator approaches. Indeed, our proposed approach generates the DHN as graph by recursively adding nodes and connecting the new nodes to previously added nodes. Doing, limiting connections and number of formed nodes become more effectively.
+This approach was chosen to provide greater flexibility in generating DHN layouts, compared to using standard random graph generation methods. Instead of relying on pre-defined models, our method constructs the DHN graph by recursively adding nodes and connecting each new node to previously created ones.
+
+This recursive process allows for finer control over the network structure—particularly in limiting the number of connections per node and managing the overall growth of the graph.
 
 ## **Heating demands model**
 
-Two heating demands models have been developed during this thesis. 
+Two heating demands models have been developed and incorporated in this project. We note that heating demands include both space heating and hot water domestic demands.
 
 #### Heating law
 
-First model uses a modified heating law approach. In this case, a substation node heating demand is directly proportional to outdoor temperature with a scaling factor provided by the heating area and the efficiency coefficient of the substation heat exchanger. *Nantes* real outdoor temperatures of the year 2022 are used in our experiment.
+First model uses a modified heating law approach. In this case, a substation node's heating demand is directly proportional to outdoor temperature with a scaling factor provided by the heating area and the efficiency coefficient of the substation heat exchanger. *Nantes* real outdoor temperatures of the year 2022 are used in our experiment.
 
 Conceptually, we generate the heating demands using the following steps:
 
@@ -40,7 +42,7 @@ Conceptually, we generate the heating demands using the following steps:
 
 #### DPE data based
 
-In the second model, we try to mimic further the distribution of buildings consumption in France during the year 2022. Real *DPE* data provided by the French goverment and made publicly avaiable are used to evaluate the distribution of DPE classes within 4 types of buildings which are commercial use (COM), multi-family house (MFH), single-family house (SFH) and appartments (APPRT). 
+In the second model, we aim to more accurately replicate the distribution of building energy consumption in France for the year 2022. To achieve this, we utilize real DPE (Diagnostic de Performance Énergétique) data provided by the French government, which is publicly available. This data is used to assess the distribution of *DPE* classes across four main building types: commercial buildings (COM), multi-family houses (MFH), single-family houses (SFH), and apartments (APPRT).
 
 Conceptually, we generate the heating demands using the following steps:
 
@@ -66,7 +68,7 @@ Some examples of generated DHN-like graphs:
 
 # Python packages
 
-This project only uses publicly available packages which makes the replication and contribution easier. To install all required packages, enter the following line commands at the project source folder
+This project only uses publicly available packages and data which makes the reproduction and contribution easier. To install all required packages, enter the following line commands at the project source folder
 
 ```bash
 python -m pip install -r requirements.txt
@@ -86,4 +88,4 @@ Please contact us at dubon.rodrigue@imt-atlantique.fr.
 
 # Next version ...
 
-Next version of this approach will include an additional step which dimensions the pipes based on the position of the heat produces, the position and the level of heating demands of the substations. 
+A future version of this approach will introduce an additional step to dimension the network pipes based on the spatial distribution of heat producers, as well as the location and heating demand levels of the substations.
