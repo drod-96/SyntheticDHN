@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')
+
+
 import numpy as np
 
 CP = 4200 # J/Kg/K at 20°C (water)

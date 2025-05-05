@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>dhn_topology module &#8212; SyntheticDHN 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=61cd365c" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-dhn_topology">
+<span id="dhn-topology-module"></span><h1>dhn_topology module<a class="headerlink" href="#module-dhn_topology" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dhn_topology.</span></span><span class="sig-name descname"><span class="pre">DHNTopology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dhn_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="graph_generator.html#graph_generator.GraphDHNGenerator" title="graph_generator.GraphDHNGenerator"><span class="pre">GraphDHNGenerator</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Generated_DHN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heating_demand_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpe_model_demand_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhn_topology.DHNTopology" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains the DHN graph generated, the topology information and the heating demands of the nodes</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.dhn_graph">
+<span class="sig-name descname"><span class="pre">dhn_graph</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.dhn_graph" title="Link to this definition">¶</a></dt>
+<dd><p>the DHN graph generator. Defaults to None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="graph_generator.html#graph_generator.GraphDHNGenerator" title="graph_generator.GraphDHNGenerator">GraphDHNGenerator</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.graph_folder_name">
+<span class="sig-name descname"><span class="pre">graph_folder_name</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.graph_folder_name" title="Link to this definition">¶</a></dt>
+<dd><p>the folder name of the graph. Defaults to “Generated_DHN”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.heating_demand_model">
+<span class="sig-name descname"><span class="pre">heating_demand_model</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.heating_demand_model" title="Link to this definition">¶</a></dt>
+<dd><p>the heating demand model version to use. If 1 use heating law model, else if it is 2 use the DPE based model. Defaults to 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.dpe_model_demand_version">
+<span class="sig-name descname"><span class="pre">dpe_model_demand_version</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.dpe_model_demand_version" title="Link to this definition">¶</a></dt>
+<dd><p>the DPE based model version to use, only used if the DPE based model is selected. Defaults to 1. Further information, refer to DPE model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.max_d">
+<span class="sig-name descname"><span class="pre">max_d</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.max_d" title="Link to this definition">¶</a></dt>
+<dd><p>max diameter value of the pipes (m). Defaults to 0.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.min_d">
+<span class="sig-name descname"><span class="pre">min_d</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.min_d" title="Link to this definition">¶</a></dt>
+<dd><p>min diameter value of the pipes (m). Defaults to 0.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.max_h">
+<span class="sig-name descname"><span class="pre">max_h</span></span><a class="headerlink" href="#dhn_topology.DHNTopology.max_h" title="Link to this definition">¶</a></dt>
+<dd><p>max convective coefficient of the pipes with minimum value 0.8. Defaults to 4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dhn_topology.DHNTopology.regenerate_heating_demands">
+<span class="sig-name descname"><span class="pre">regenerate_heating_demands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_demand_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhn_topology.DHNTopology.regenerate_heating_demands" title="Link to this definition">¶</a></dt>
+<dd><p>Regenerates the heating deùands if the heating model has been changed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_demand_version</strong> (<em>int</em><em>, </em><em>optional</em>) – the new heating demand model version to use. Defaults to 2.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SyntheticDHN</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Rodrigue Dubon.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/dhn_topology.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

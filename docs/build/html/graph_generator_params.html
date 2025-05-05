@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>graph_generator_params module &#8212; SyntheticDHN 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=61cd365c" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-graph_generator_params">
+<span id="graph-generator-params-module"></span><h1>graph_generator_params module<a class="headerlink" href="#module-graph_generator_params" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">graph_generator_params.</span></span><span class="sig-name descname"><span class="pre">GraphGeneratorParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E_cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_rp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_ee</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_nodes_per_region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_regions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_diameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cycle_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance_bt_producers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_producers_to_reach</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_weight_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_weight_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class containing the control parameters of the DHN generator. It englobes all the necessary control parameters of the graph generator.
+We note that all defined parameters are publicly settable and gettable within this class.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.E_cp">
+<span class="sig-name descname"><span class="pre">E_cp</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.E_cp" title="Link to this definition">¶</a></dt>
+<dd><p>Probability value of having center producer of the overall DHN (default = 0.5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.E_rp">
+<span class="sig-name descname"><span class="pre">E_rp</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.E_rp" title="Link to this definition">¶</a></dt>
+<dd><p>Probability value of having producer(s) within a generated region (default = 0.2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.E_ee">
+<span class="sig-name descname"><span class="pre">E_ee</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.E_ee" title="Link to this definition">¶</a></dt>
+<dd><p>Probability value of edges between generated regions. It controls the connectivity between the regions (default = 0.1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.nb_nodes_per_region">
+<span class="sig-name descname"><span class="pre">nb_nodes_per_region</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.nb_nodes_per_region" title="Link to this definition">¶</a></dt>
+<dd><p>Number of nodes (or size) of each generated region (default = 100)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.nb_regions">
+<span class="sig-name descname"><span class="pre">nb_regions</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.nb_regions" title="Link to this definition">¶</a></dt>
+<dd><p>Number of regions to generate (default = 4)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.max_diameter">
+<span class="sig-name descname"><span class="pre">max_diameter</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.max_diameter" title="Link to this definition">¶</a></dt>
+<dd><p>Maximal diameter of the DHN, measured in hop-distances (default = 12)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.min_cycle_length">
+<span class="sig-name descname"><span class="pre">min_cycle_length</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.min_cycle_length" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum size of acceptable cycles (default = 3). Any cycle with number of edges below this threshold will be broken.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.target_ratio">
+<span class="sig-name descname"><span class="pre">target_ratio</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.target_ratio" title="Link to this definition">¶</a></dt>
+<dd><p>Targeted ratio of #Edges/#Nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.min_distance_bt_producers">
+<span class="sig-name descname"><span class="pre">min_distance_bt_producers</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.min_distance_bt_producers" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum distance between two distributed heat producers within the DHN, measured in hop-distance (default = 3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.nb_producers_to_reach">
+<span class="sig-name descname"><span class="pre">nb_producers_to_reach</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.nb_producers_to_reach" title="Link to this definition">¶</a></dt>
+<dd><p>Number of heat producers to reach wihin the DHN, we note that it can be not achieved (default = 3)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.edge_weight_mean">
+<span class="sig-name descname"><span class="pre">edge_weight_mean</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.edge_weight_mean" title="Link to this definition">¶</a></dt>
+<dd><p>Mean of the normal distribution used to generate the edges’ weights (default = 1.5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="graph_generator_params.GraphGeneratorParameters.edge_weight_std">
+<span class="sig-name descname"><span class="pre">edge_weight_std</span></span><a class="headerlink" href="#graph_generator_params.GraphGeneratorParameters.edge_weight_std" title="Link to this definition">¶</a></dt>
+<dd><p>Standard deviation of the normal distribution used to generate the edges’ weights (default = 0.2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>flaot</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SyntheticDHN</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Rodrigue Dubon.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/graph_generator_params.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
