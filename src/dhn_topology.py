@@ -1,8 +1,8 @@
 import sys
 sys.path.insert(0, r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')
 
-from graph_generator import GraphDHNGenerator
-from demands_model_dpe import generate_substation_demands, get_json_serializable_information
+from src.graph_generator import GraphDHNGenerator
+from src.demands_model_dpe import generate_substation_demands, get_json_serializable_information
 
 import networkx as nx 
 import os

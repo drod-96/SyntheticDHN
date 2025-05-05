@@ -8,8 +8,8 @@ import numpy as np
 from itertools import product
 import pandas as pd
 import os
-from constants import *
-from graph_generator_params import GraphGeneratorParameters
+from src.constants import *
+from src.graph_generator_params import GraphGeneratorParameters
  
 class GraphDHNGenerator(object):
     """ Main Class to perform random DHN generator

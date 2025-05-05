@@ -6,7 +6,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath(r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src'))  # Adjust based on where your code is
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')))  # Adjust based on where your code is
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
