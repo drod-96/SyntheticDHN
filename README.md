@@ -4,6 +4,8 @@ This project, developed as part of a Ph.D. research, provides synthetic District
 
 SyntheticDHN is a comprehensive synthetic 3rd Generation District Heating Network (3GDHN) generator. We believe it can be a valuable tool for both users and researchers, potentially serving as a first step toward establishing standardized DHN benchmarks—similar to the IEEE benchmarks used in power systems. The software employs a graph theory-based approach combined with the node method to generate plausible DHN layouts, incorporating domain-specific constraints. Nodes are randomly designated as either substations or junction points. Substation nodes are then assigned synthetic, yet realistic, year-long heating demand profiles based on data from France's ADEME [open access data](https://data-transitions2050.ademe.fr/).
 
+![Illustration SytheticDHN](./Images/Illustration_synthetic_DHN_framework.png)
+
 ## **Graph generator model**
 
 The graph generator is a constrained random graph model designed to emulate the topology of real-world District Heating Networks (DHNs). Its goal is to reproduce key structural properties, such as node degree distribution, maximum node degree, and overall network connectivity. To maintain greater control over the generated topology, this model does not rely on standard *random graph generators*. Instead, it builds the network from scratch using a designed **recursive nodes adding approach**. Given a target number of nodes and a maximum degree, nodes are added one by one and randomly connected to previously created nodes, while respecting the specified constraints.
