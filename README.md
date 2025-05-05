@@ -6,7 +6,7 @@ SyntheticDHN is a comprehensive synthetic 3rd Generation District Heating Networ
 
 ![Illustration SytheticDHN](./Images/Illustration_synthetic_DHN_framework.png)
 
-SyntheticDHN can be associated with any node-based simulation model such as *HeatGrid* (Rodrigue *et al.*, ![ECOS 2024](https://www.proceedings.com/077185-0025.html)).
+SyntheticDHN can be associated with any node-based simulation model such as *HeatGrid* ([Rodrigue D. *et al.*, ECOS 2024](https://www.proceedings.com/077185-0025.html)).
 
 ## **Graph generator model**
 
