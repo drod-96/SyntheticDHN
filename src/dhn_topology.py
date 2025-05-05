@@ -12,6 +12,16 @@ OFFICE_BUILDING_U = 2.5
 
 class DHNTopology(object):
     """This class contains the DHN graph generated, the topology information and the heating demands of the nodes
+
+    Args:
+        dhn_graph (GraphDHNGenerator, optional): the DHN graph generator. Defaults to None.
+        graph_folder_name (str, optional): the folder name of the graph. Defaults to "Generated_DHN".
+        heating_demand_model (int, optional): the heating demand model version to use. If 1 use heating law model, else if it is 2 use the DPE based model. Defaults to 2.
+        dpe_model_demand_version (int, optional): the DPE based model version to use, only used if the DPE based model is selected. Defaults to 1. Further information, refer to DPE model
+        max_d (float, optional): max diameter value of the pipes (m). Defaults to 0.5.
+        min_d (float, optional): min diameter value of the pipes (m). Defaults to 0.5.
+        max_h (float, optional): max convective coefficient of the pipes with minimum value 0.8. Defaults to 4.
+
     """
     
     def __init__(self, 
@@ -22,17 +32,6 @@ class DHNTopology(object):
                  max_h=4, 
                  max_d=0.5, 
                  min_d=0.05):
-        """Initializes the class and creates the topology excel file directly 
-
-        Args:
-            dhn_graph (GraphDHNGenerator, optional): the DHN graph generator. Defaults to None.
-            graph_folder_name (str, optional): the folder name of the graph. Defaults to "Generated_DHN".
-            heating_demand_model (int, optional): the heating demand model version to use. If 1 use heating law model, else if it is 2 use the DPE based model. Defaults to 2.
-            dpe_model_demand_version (int, optional): the DPE based model version to use, only used if the DPE based model is selected. Defaults to 1. Further information, refer to DPE model
-            max_d (float, optional): max diameter value of the pipes (m). Defaults to 0.5.
-            min_d (float, optional): min diameter value of the pipes (m). Defaults to 0.5.
-            max_h (float, optional): max convective coefficient of the pipes with minimum value 0.8. Defaults to 4.
-        """
         
         self._dhn_name = os.path.join('Synthetic_DHNs', graph_folder_name)
         self._dhn_graph = dhn_graph
@@ -65,6 +64,9 @@ class DHNTopology(object):
 
         Args:
             writer_excel : excel writer
+
+        Returns:
+            None
         """
         node_indices = self._dhn_graph.node_indices
         node_positions = self._dhn_graph.node_positions
@@ -95,6 +97,9 @@ class DHNTopology(object):
 
         Args:
             writer_excel : excel writer
+
+        Returns:
+            None
         """
         
         node_indices = self._dhn_graph.node_indices
@@ -125,6 +130,9 @@ class DHNTopology(object):
 
         Args:
             writer_excel : excel writer
+
+        Returns:
+            None
         """
         
         # This demands model uses the DPE France distribution knowledge. Further information is detailed in "Demands models"
@@ -169,10 +177,13 @@ class DHNTopology(object):
         self._loads = df_loads
                 
     def _generate_loads_model_heating_law(self, writer_excel):
-        """Generates heating demands of the nodes based on heating law model
+        """Generates heating demands of the nodes based on heating law model. It can be attained with *loads* parameter of the class.
 
         Args:
             writer_excel : excel writer
+
+        Returns:
+            None
         """
         
         # Ce modèle utilise une loi de chauffe pour estimer la demande
@@ -223,7 +234,13 @@ class DHNTopology(object):
         self._loads = df_loads
         
     def _fill_dhn_information(self):
-        """Creates the topology excel file and fills the information about the nodes and the pipes  
+        """Creates the topology excel file and fills the information about the nodes and the pipes
+
+        Args: 
+            None
+
+        Returns:
+            None  
         """
         if self._check_not_empty_graph():
             
@@ -241,8 +258,14 @@ class DHNTopology(object):
     def _generate_heating_demands(self):
         """Generates heating demands values of the nodes of the DHN generated
 
+        Args:
+            None
+
         Raises:
             Exception: raise exception if no graph has been created and the topology excel file is not present
+
+        Returns: 
+            None
         """
         if self._check_not_empty_graph(): 
             excel_file = os.path.join(self._dhn_name, 'topology.xlsx')
@@ -263,6 +286,9 @@ class DHNTopology(object):
 
         Args:
             model_demand_version (int, optional): the new heating demand model version to use. Defaults to 2.
+
+        Returns:
+            None
         """
         if model_demand_version != self._heating_demand_version:
             self._heating_demand_version = model_demand_version

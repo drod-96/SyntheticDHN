@@ -9,7 +9,12 @@ from src.constants import *
 from src.graph_generator_params import GraphGeneratorParameters
  
 class GraphDHNGenerator(object):
-    """Random DHN graph generator object
+    """ Main Class to perform random DHN generator
+
+    Args:
+        control_params (GraphGeneratorParameters): Control parameters of the generation
+        verbose (int): To perform verbose or not (default = 1)
+
     """
     
     def __init__(self, control_params: GraphGeneratorParameters = None, verbose=1):
@@ -24,6 +29,14 @@ class GraphDHNGenerator(object):
         self.verbose = verbose
         
     def _generate_random_weight(self):
+        """ Generates a random weight for an edge using normal distribution given the mean and standard deviation from the control parameters.
+        
+        Args:
+            None
+        
+        Returns:
+            weight (float): random weight value applied to an edge
+        """
         mean = self.params.edge_weight_mean
         std = self.params.edge_weight_std
         weight = np.random.default_rng().normal(mean, std)
@@ -32,6 +45,14 @@ class GraphDHNGenerator(object):
         return weight
     
     def _check_for_short_cycles(self, G:nx.Graph):
+        """ Checks if the generated graph have short cycles (e.g., cliques). Any short cycle will be broken by randomly removing one edge within this cycle.
+
+        Args:
+            G (networkx.Graph): Generated graph
+
+        Returns:
+            G_to_use (networkx.Graph): Generated graph treated
+        """
         G_to_use = G.copy()
         short_cycles = self._get_short_cycles(G_to_use)
         print(f"Found cycles = {short_cycles}")
@@ -54,6 +75,15 @@ class GraphDHNGenerator(object):
         return G_to_use
     
     def _get_short_cycles(self, G:nx.Graph):
+        """ Gets the list of short cycles.
+
+        Args:
+            G (networkx.Graph): Generated graph to treat
+
+        Returns:
+            short_cycles (List[tuple]): List of cycles. A cycle is a list of tuple indicating the edges.
+        """
+
         short_cycles = []
         try:
             cycles = {}
@@ -73,11 +103,32 @@ class GraphDHNGenerator(object):
         return short_cycles
 
     def _remove_self_loop(self, G: nx.Graph()):
+        """ Removes any self loop.
+
+        Args:
+            G (networkx.Graph): Generated graph
+
+        Returns:
+            G (networkx.Graph): Generated graph treated
+        """
+
         for (u, v) in iter(nx.selfloop_edges(G)):
             G.remove_edge(u, v)
         return G
 
     def _generate_random_graph(self, G, remaining_nodes, jump_node_num, max_degree, node_num):
+        """ This function performs our proposed node-recursive graph generation.
+
+        Args:
+            G (networkx.Graph): Recursively generated graph
+            remaining_nodes (int): Number of remaining nodes to add (N - Size(G))
+            jump_node_num (int): Number used to jump the labels of the nodes added
+            max_degree (int): Maximum degree of the nodes added
+            node_num (int): Label of the current node to add
+
+        Returns: 
+            G (networkx.Graph) or None
+        """
         if not remaining_nodes:
             return G
         current_node = node_num
@@ -93,6 +144,15 @@ class GraphDHNGenerator(object):
         self._generate_random_graph(G, remaining_nodes, jump_node_num, max_degree, n)
 
     def _generate_region_graph(self, center, n):
+        """ Here, we generate a DHN region using the proposed nodes-recursive graph generation.
+
+        Args:
+            center (tuple[float]): 2D spatial coordinates used as center of the DHN
+            n (int): Number of nodes for this region
+
+        Returns:
+            Tuple: Graph (networkx.Graph),  pos (List of 2D coordinates of the nodes)
+        """
         max_degree = self.params.max_degree
         jump_nd = self.params.jump_node_numm
         max_diameter = self.params.max_diameter
@@ -125,6 +185,15 @@ class GraphDHNGenerator(object):
         return G, pos
 
     def generate_random_region_with_target(self, center):
+        """ Here, we generate a DHN region using the proposed nodes-recursive graph generation but with a ratio (N/E) targeted than a number of nodes to reach. This target illustrates the tree-likeliness of the generated graph and is defined in the control parameters.
+
+        Args:
+            center (tuple[float]): 2D spatial coordinates used as center of the DHN
+
+        Returns:
+            Graph (networkx.Graph)
+        """
+
         params = self.params
         nb = params.nb_nodes_per_region
         ratio = 100
@@ -153,6 +222,16 @@ class GraphDHNGenerator(object):
         return G
     
     def generate_random_dhn(self):
+        """ Generates the overall synthetic DHN relying on the control parameters defined in the input of the class.
+        It generates sucessively the regions, add random connections between the regions, select random heat producers and perfoms post processing.
+
+        Args:
+            None (using control parameters)
+
+        Returns:
+            bool: True if the generation didn't yield in any errors, False otherwise
+        """
+
         params = self.params
         center_coordinates_of_trees = [[-1, -1], [1, 1], [-1, 1],[2, 1],[1,2]]
         
@@ -297,6 +376,16 @@ class GraphDHNGenerator(object):
             return False
     
     def read_generated_graph(self, excel_file_topology: str, plot_graph=True):
+        """ Reads and loads generated graph.
+
+        Args:
+            excel_file_topology (str): Path of the excel file containing the generated graph topology
+            plot_graph (bool): Whether to plot the loaded graph (default = True)
+        
+        Returns:
+            None
+        """
+
         # utiliser "expand graph" pour visualiser graph
         excel_data = pd.read_excel(excel_file_topology, sheet_name=['nodes', 'pipes'])
         df_nodes = excel_data['nodes']
@@ -333,11 +422,27 @@ class GraphDHNGenerator(object):
             self.plot_district_heating_network()
     
     def plot_district_heating_network(self):
+        """ Plots the synthetic DHN corresponding to this graph generator class
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         plt.figure(figsize=(42,40))
         nx.draw(self.graph, pos=self.node_positions, labels=self.node_indices, node_color=self.node_colors, node_size=200, font_size=12, font_color="black")
         plt.show()
     
     def generate_random_connected_dhn(self):
+        """ Redundant function to generate the overall synthetic DHN. It calls the function *self.generate_random_dhn()* and returns None.
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         is_generated = False
         while not is_generated:
             is_generated = self.generate_random_dhn()

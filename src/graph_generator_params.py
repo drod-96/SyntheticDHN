@@ -1,6 +1,24 @@
 
 class GraphGeneratorParameters():
-    """Class containing the control parameters of the DHN generator
+    """Class containing the control parameters of the DHN generator. It englobes all the necessary control parameters of the graph generator.
+    We note that all defined parameters are publicly settable and gettable within this class.
+
+
+    Args:
+        E_cp (float): Probability value of having center producer of the overall DHN (default = 0.5)
+        E_rp (float): Probability value of having producer(s) within a generated region (default = 0.2)
+        E_ee (float): Probability value of edges between generated regions. It controls the connectivity between the regions (default = 0.1)
+        nb_nodes_per_region (int): Number of nodes (or size) of each generated region (default = 100)
+        nb_regions (int): Number of regions to generate (default = 4)
+        max_diameter (int): Maximal diameter of the DHN, measured in hop-distances (default = 12)
+        min_cycle_length (int): Minimum size of acceptable cycles (default = 3). Any cycle with number of edges below this threshold will be broken.
+        target_ratio (float): Targeted ratio of #Edges/#Nodes
+        min_distance_bt_producers (int): Minimum distance between two distributed heat producers within the DHN, measured in hop-distance (default = 3)
+        nb_producers_to_reach (int): Number of heat producers to reach wihin the DHN, we note that it can be not achieved (default = 3)
+        edge_weight_mean (float): Mean of the normal distribution used to generate the edges' weights (default = 1.5)
+        edge_weight_std (flaot): Standard deviation of the normal distribution used to generate the edges' weights (default = 0.2)
+
+
     """
     def __init__(self, 
                  E_cp = 0.5, # Probability of having central producer
