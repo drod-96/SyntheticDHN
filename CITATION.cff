@@ -1,9 +1,21 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite us as below."
+message: "If you use this software or any part of it, please cite us as below."
 authors:
-- family-names: "Rodrigue"
-  given-names: "Dubon"
-  orcid: "https://orcid.org/0009-0007-2960-750X"
+  - family-names: "Rodrigue"
+    given-names: "Dubon"
+    orcid: "https://orcid.org/0009-0007-2960-750X"
+  - family-names: "Mabrouk"
+    given-names: "Mohamed Tahar"
+    orcid: "https://orcid.org/0000-0003-1137-916X"
+  - family-names: "Pasdeloup"
+    given-names: "Bastien"
+    orcid: "https://orcid.org/0000-0002-8417-7537X"
+  - family-names: "Meyer"
+    given-names: "Patrick"
+    orcid: "https://orcid.org/0000-0001-6479-213X"
+  - family-names: "Lacarrière"
+    given-names: "Bruno"
+    orcid: "https://orcid.org/0000-0003-2827-3126"
 title: "SyntheticDHN: a Realistic District Heating Network generator"
 version: 1.0
 doi: 10.5281/zenodo.11382923
