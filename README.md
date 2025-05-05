@@ -6,6 +6,8 @@ SyntheticDHN is a comprehensive synthetic 3rd Generation District Heating Networ
 
 ![Illustration SytheticDHN](./Images/Illustration_synthetic_DHN_framework.png)
 
+SyntheticDHN can be associated with any node-based simulation model such as *HeatGrid* (Rodrigue *et al.*, ![ECOS 2024](https://www.proceedings.com/077185-0025.html)).
+
 ## **Graph generator model**
 
 The graph generator is a constrained random graph model designed to emulate the topology of real-world District Heating Networks (DHNs). Its goal is to reproduce key structural properties, such as node degree distribution, maximum node degree, and overall network connectivity. To maintain greater control over the generated topology, this model does not rely on standard *random graph generators*. Instead, it builds the network from scratch using a designed **recursive nodes adding approach**. Given a target number of nodes and a maximum degree, nodes are added one by one and randomly connected to previously created nodes, while respecting the specified constraints.
@@ -70,6 +72,13 @@ Some examples of generated DHN-like graphs:
 ![Sample DHN-2](https://github.com/drod-96/synthetic_dhn_model/blob/main/Images/output_dhn_test_3.png?raw=true)
 
 
+Heating demands profiles generated using the DPE-based approach are illustrated following.
+
+![HeatDemands1](./Images/illustration_heating_demands.png)
+
+![HeatDemands2](./Images/illustration_heating_demands_distribution.png)
+
+
 # Python packages
 
 This project only uses publicly available packages and data which makes the reproduction and contribution easier. To install all required packages, enter the following line commands at the project source folder
@@ -90,6 +99,8 @@ This project humbly tries to propose a synthetic DHN generator using expertise-k
 
 Please contact us at dubon.rodrigue@imt-atlantique.fr.
 
-# Next version ...
+# Post treatment
 
-A future version of this approach will introduce an additional step to dimension the network pipes based on the spatial distribution of heat producers, as well as the location and heating demand levels of the substations.
+The pipes and heat sources can be dimensioned using any physical simulation models, leading to realistic physical dynamics of the generated DHN.
+
+![tr_illustration](./Images/illustration_tr.png)
