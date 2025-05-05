@@ -1,5 +1,8 @@
-from src.graph_generator import GraphDHNGenerator
-from src.demands_model_dpe import generate_substation_demands, get_json_serializable_information
+import sys
+sys.path.insert(0, r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')
+
+from graph_generator import GraphDHNGenerator
+from demands_model_dpe import generate_substation_demands, get_json_serializable_information
 
 import networkx as nx 
 import os
@@ -13,7 +16,7 @@ OFFICE_BUILDING_U = 2.5
 class DHNTopology(object):
     """This class contains the DHN graph generated, the topology information and the heating demands of the nodes
 
-    Args:
+    Attributes:
         dhn_graph (GraphDHNGenerator, optional): the DHN graph generator. Defaults to None.
         graph_folder_name (str, optional): the folder name of the graph. Defaults to "Generated_DHN".
         heating_demand_model (int, optional): the heating demand model version to use. If 1 use heating law model, else if it is 2 use the DPE based model. Defaults to 2.
@@ -32,6 +35,19 @@ class DHNTopology(object):
                  max_h=4, 
                  max_d=0.5, 
                  min_d=0.05):
+        
+        """ This class contains the DHN graph generated, the topology information and the heating demands of the nodes
+
+        Args:
+            dhn_graph (GraphDHNGenerator, optional): the DHN graph generator. Defaults to None.
+            graph_folder_name (str, optional): the folder name of the graph. Defaults to "Generated_DHN".
+            heating_demand_model (int, optional): the heating demand model version to use. If 1 use heating law model, else if it is 2 use the DPE based model. Defaults to 2.
+            dpe_model_demand_version (int, optional): the DPE based model version to use, only used if the DPE based model is selected. Defaults to 1. Further information, refer to DPE model
+            max_d (float, optional): max diameter value of the pipes (m). Defaults to 0.5.
+            min_d (float, optional): min diameter value of the pipes (m). Defaults to 0.5.
+            max_h (float, optional): max convective coefficient of the pipes with minimum value 0.8. Defaults to 4.
+
+        """
         
         self._dhn_name = os.path.join('Synthetic_DHNs', graph_folder_name)
         self._dhn_graph = dhn_graph

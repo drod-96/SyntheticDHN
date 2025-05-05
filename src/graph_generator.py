@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')
+
 import matplotlib.pyplot as plt
 from random import random
 import networkx as nx
@@ -5,19 +8,26 @@ import numpy as np
 from itertools import product
 import pandas as pd
 import os
-from src.constants import *
-from src.graph_generator_params import GraphGeneratorParameters
+from constants import *
+from graph_generator_params import GraphGeneratorParameters
  
 class GraphDHNGenerator(object):
     """ Main Class to perform random DHN generator
 
-    Args:
+    Attributes:
         control_params (GraphGeneratorParameters): Control parameters of the generation
         verbose (int): To perform verbose or not (default = 1)
-
     """
     
     def __init__(self, control_params: GraphGeneratorParameters = None, verbose=1):
+        """ Initializes the GraphDHNGenerator
+        
+        Args:
+            control_params (GraphGeneratorParameters): Control parameters of the generation
+            verbose (int): To perform verbose or not (default = 1)
+
+        """
+
         if control_params == None:
             control_params = GraphGeneratorParameters()
         self.params = control_params

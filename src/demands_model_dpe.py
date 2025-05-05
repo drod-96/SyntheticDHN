@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, r'D:\PhD DATA\Codes & Works\SyntheticDHN\SyntheticDHN\src')
+
 import numpy as np
 import os
 import json
