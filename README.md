@@ -22,7 +22,7 @@ Expert knowledge also indicates that DHNs are often subdivided into internal reg
 
 Importantly, all of these parameters are user-configurable, allowing for flexible adaptation to different requirements.
 
-### Recursie nodes adding approach
+### Recursive nodes adding approach
 
 This approach was chosen to provide greater flexibility in generating DHN layouts, compared to using standard random graph generation methods. Instead of relying on pre-defined models, our method constructs the DHN graph by recursively adding nodes and connecting each new node to previously created ones.
 
@@ -48,14 +48,14 @@ $$D = A . U . (T - Tref) $$
 
 #### DPE data based
 
-In the second model, we aim to more accurately replicate the distribution of building energy consumption in France for the year 2022. To achieve this, we utilize real DPE (Diagnostic de Performance Énergétique) data provided by the French government, which is publicly available. This data is used to assess the distribution of *DPE* classes across four main building types: commercial buildings (COM), multi-family houses (MFH), single-family houses (SFH), and apartments (APPRT).
+In the second model, we aim to more accurately replicate the distribution of building energy consumption in France for the year 2022. To achieve this, we utilize real DPE ('Diagnostic de Performance Énergétique') data provided by the French government, which is publicly available on ADEME website. This data is used to assess the distribution of *DPE* classes across four main building types: commercial buildings (COM), multi-family houses (MFH), single-family houses (SFH), and apartments (APPRT).
 
 Conceptually, we generate the heating demands using the following steps:
 
 - Select the percentage and heating area of each building type within the substation
-- Randomly select the DPE class based on know french building distributions
+- Randomly select the DPE class based on known french building distributions
 - Randomly select the energy consumption value based on the DPE class of each building type
-- Creates the heating demands profile for the year based on know heating demands profiles
+- Creates the heating demands profile for the year based on known heating demands profiles
 
 ADEME data can be retrieved from the ADEME [website](https://data-transitions2050.ademe.fr/).
 
@@ -63,7 +63,7 @@ To generate the heating demands profiles, this work relies on profiles data from
 
 # Usability
 
-We propose a notebook file *main.ipynb* illustrating how to generate a random DHN and nodes heating demands. All code sources can be found in the folder *src*. We also note that this repository uses only publicly available data including Nantes outdoor temperatures, DPE classes range of consumption powers and class distribution taken from DPE data. DPE data files are not available in this repository but can be found on the ADEME [[link](https://www.ademe.fr/)] website. For more information, please refer to contact section. 
+We propose a notebook file *main.ipynb* illustrating how to generate a random DHN and nodes heating demands. All code sources can be found in the folder *src*. We also note that this repository uses only publicly available data including Nantes outdoor temperatures, DPE classes range of consumption powers and class distribution taken from ADEME data. DPE data files are not available in this repository but can be downloaded from the ADEME website [[link](https://www.ademe.fr/)]. For more information, please refer to contact section. 
 
 Some examples of generated DHN-like graphs:
 
@@ -95,12 +95,12 @@ For more information see [LICENSE](LICENSE).
 
 # Contributions
 
-This project humbly tries to propose a synthetic DHN generator using expertise-knowledge and graph theories. We recognize that many parts can be improved and we welcome all contributions from the community. 
+This project humbly tries to propose a novel synthetic DHN generator using expertise-knowledge and graph theories. We recognize that many parts can be improved and we welcome all contributions from the community. 
 
 Please contact us at dubon.rodrigue@imt-atlantique.fr.
 
-# Post treatment
+# Post-processing Steps
 
-The pipes and heat sources can be dimensioned using any physical simulation models, leading to realistic physical dynamics of the generated DHN.
+We note that the diameter and characteristics of the pipes are generated randomly. However, this may not reflect reality, especially in pipes' diameters which increase as we are close to heat sources. Therefore, these diameters can be adapted in post-processing steps alongside with the dimensioning of the heat sources. Although, we believe that this process can be also incorporated in the Graph Generation process but we leave that the future improvements and passionate collaborators ;).
 
 ![tr_illustration](./Images/illustration_tr.png)
