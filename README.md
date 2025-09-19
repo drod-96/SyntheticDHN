@@ -101,6 +101,6 @@ Please contact us at dubon.rodrigue@imt-atlantique.fr.
 
 # Post-processing Steps
 
-We note that the diameter and characteristics of the pipes are generated randomly. However, this may not reflect reality, especially in pipes' diameters which increase as we are close to heat sources. Therefore, these diameters can be adapted in post-processing steps alongside with the dimensioning of the heat sources. Although, we believe that this process can be also incorporated in the Graph Generation process but we leave that the future improvements and passionate collaborators ;).
+We note that the diameter and characteristics of the pipes are generated randomly. However, this may not reflect reality, especially in pipes' diameters which increase as we are close to heat sources. Therefore, these diameters can be adapted in post-processing steps alongside with the dimensioning of the heat sources. Although, we believe that this process can be also incorporated in the Graph Generation process but we leave that the future improvements and passionate collaborators :smirk: .
 
 ![tr_illustration](./Images/illustration_tr.png)
